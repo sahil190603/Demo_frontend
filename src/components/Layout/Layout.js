@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Layout, ConfigProvider } from "antd";
 import { theme } from "antd";
 import {
@@ -13,11 +13,23 @@ const { Header, Content, Sider } = Layout;
 
 function Layouts() {
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  
+  const storedTheme = localStorage.getItem("theme") || "light"; 
+  const [isDarkMode, setIsDarkMode] = useState(storedTheme === "dark"); 
   const [collapsed, setCollapsed] = useState(false);
 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === "dark");
+    }
+  }, []);
+
   const handleToggle = () => {
-    setIsDarkMode((previousValue) => !previousValue);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
 
   const handleCollapse = () => {
@@ -84,8 +96,8 @@ function Layouts() {
             style={{
               marginLeft: collapsed ? 55 : 180,
               padding: "15px",
-            //   transition: "margin-left 0.2s",
-            transition:"0.2s"
+              //   transition: "margin-left 0.2s",
+              transition: "0.2s",
             }}
           >
             <Content>

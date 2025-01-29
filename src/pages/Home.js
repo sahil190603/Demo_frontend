@@ -12,6 +12,7 @@ function Home() {
       }}
     >
       <Card
+      className="transition-card"
         style={{
           textAlign: "center",
           borderRadius: "2px",
