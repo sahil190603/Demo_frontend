@@ -1,35 +1,35 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 
-.logo{
-    font-size: 22px;
-    text-decoration: underline; 
-    font-family: 'Pacifico', cursive; 
-    color: white;
-  }
-  
-  .text{
-    font-size: 18px;
-    font-family: cursive;
-  }
-  .transition-card {
-    transition: transform 0.3s ease, background-color 0.3s ease; 
-  }
-  
-  ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-    background: transparent;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: grey;
-    border-radius: 10px;
-  }
-  
-  * {
-    user-select: none; 
-  }
-  
-  
+.logo {
+  font-size: 22px;
+  text-decoration: underline;
+  font-family: 'Pacifico', cursive;
+  color: white;
+}
+
+.text {
+  font-size: 18px;
+  font-family: cursive;
+}
+
+.transition-card {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+* {
+  user-select: none;
+}
+
+
