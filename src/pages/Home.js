@@ -5,12 +5,12 @@ import MapComponent from "../components/Mapcomponent";
 
 function Home() {
   const { isMobile } = MediaQueryHandler();
-  const [selectedTab , setSelectedTab] = useState("1");
+  const [selectedTab, setSelectedTab] = useState("1");
 
   const carouselItemStyle = {
-    height:"calc(90vh - 300px)",
+    height: "calc(90vh - 300px)",
     display: "flex",
-    justifyContent: "center", 
+    justifyContent: "center",
     alignItems: "center",
     fontSize: "24px",
     fontWeight: "bold",
@@ -18,7 +18,7 @@ function Home() {
     borderRadius: "2px",
     margin: "3px",
   };
-  
+
   const onChange = (key) => {
     setSelectedTab(key);
   };
@@ -49,7 +49,7 @@ function Home() {
           onChange={onChange}
           tabBarGutter={10}
           type="card"
-          size={"large"}  
+          size={"large"}
           centered={true}
           items={new Array(3).fill(null).map((_, i) => {
             const id = String(i + 1);
@@ -94,14 +94,11 @@ function Home() {
           </div>
         </Carousel>
         <Card style={{ marginTop: "20px", borderRadius: "2px" }}>
-
-        <MapComponent selectedTab={selectedTab}/>
-
+          <MapComponent selectedTab={selectedTab} />
         </Card>
       </Card>
     </div>
   );
 }
-
 
 export default Home;

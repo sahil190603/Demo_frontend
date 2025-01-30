@@ -16,7 +16,6 @@ function MapComponent({ selectedTab }) {
   };
 
   const gmapCanvasStyle = {
-    overflow: "hidden",
     background: "none !important",
     width: "100%",
     height: isMobile ? "170px" : "300px",
