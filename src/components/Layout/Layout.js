@@ -11,6 +11,7 @@ import {
 import ModeToggle from "../Generic/ModeToggle";
 import MainRoute from "../../Route/route";
 import MediaQueryHandler from "../Hooks/MediaQueryhandler";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const { Header, Content, Sider } = Layout;
 
@@ -21,8 +22,11 @@ function Layouts() {
   const [isDarkMode, setIsDarkMode] = useState(storedTheme === "dark");
   const [collapsed, setCollapsed] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [selectedKey, setSelectedKey] = useState("1");
 
   const { isMobile } = MediaQueryHandler();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -30,6 +34,14 @@ function Layouts() {
       setIsDarkMode(savedTheme === "dark");
     }
   }, []);
+
+  useEffect(() => {
+    if (location.pathname === "/contact_us") {
+      setSelectedKey("2");
+    } else {
+      setSelectedKey("1");
+    }
+  }, [location.pathname]);
 
   const handleToggle = () => {
     const newTheme = !isDarkMode;
@@ -43,6 +55,18 @@ function Layouts() {
 
   const toggleDrawer = () => {
     setDrawerVisible(!drawerVisible);
+  };
+
+  const handleMenuClick = (key) => {
+    setSelectedKey(key);
+    if (key === "1") {
+      navigate("/");
+    } else if (key === "2") {
+      navigate("/contact_us");
+    }
+    if (isMobile) {
+      toggleDrawer();
+    }
   };
 
   return (
@@ -117,12 +141,24 @@ function Layouts() {
                 backgroundColor: isDarkMode ? "#001529" : "#ffffff",
               }}
             >
-              <Menu selectedKeys={[]} mode="inline" style={{ height: "100%" }}>
-                <Menu.Item key={[]} icon={<HomeOutlined />}>
+              <Menu
+                selectedKeys={[selectedKey]}
+                mode="inline"
+                style={{ height: "100%" }}
+              >
+                <Menu.Item
+                  key="1"
+                  icon={<HomeOutlined />}
+                  onClick={() => handleMenuClick("1")}
+                >
                   Home
                 </Menu.Item>
-                <Menu.Item key={[]} icon={<InfoCircleOutlined />}>
-                  Coantact us
+                <Menu.Item
+                  key="2"
+                  icon={<InfoCircleOutlined />}
+                  onClick={() => handleMenuClick("2")}
+                >
+                  Contact us
                 </Menu.Item>
               </Menu>
             </Sider>
@@ -141,11 +177,23 @@ function Layouts() {
               }}
               width={200}
             >
-              <Menu selectedKeys={[]} mode="inline" style={{ height: "100%" }}>
-                <Menu.Item key={[]} icon={<HomeOutlined />}>
+              <Menu
+                selectedKeys={[selectedKey]}
+                mode="inline"
+                style={{ height: "100%" }}
+              >
+                <Menu.Item
+                  key="1"
+                  icon={<HomeOutlined />}
+                  onClick={() => handleMenuClick("1")}
+                >
                   Home
                 </Menu.Item>
-                <Menu.Item key={[]} icon={<InfoCircleOutlined />}>
+                <Menu.Item
+                  key="2"
+                  icon={<InfoCircleOutlined />}
+                  onClick={() => handleMenuClick("2")}
+                >
                   Contact us
                 </Menu.Item>
               </Menu>

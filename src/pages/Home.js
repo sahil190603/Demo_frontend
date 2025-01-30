@@ -5,10 +5,10 @@ import MapComponent from "../components/Mapcomponent";
 
 function Home() {
   const { isMobile } = MediaQueryHandler();
-  const [selectedTab , setSelectedTab] = useState(1);
+  const [selectedTab , setSelectedTab] = useState("1");
 
   const carouselItemStyle = {
-    height: isMobile ? "calc(90vh-350px)" :  "calc(90vh - 300px)",
+    height:"calc(90vh - 300px)",
     display: "flex",
     justifyContent: "center", 
     alignItems: "center",

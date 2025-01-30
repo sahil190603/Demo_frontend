@@ -29,7 +29,6 @@ function MapComponent({ selectedTab }) {
     border: "0",
   };
 
-
   return (
     <div
       style={{
