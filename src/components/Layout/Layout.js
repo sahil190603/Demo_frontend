@@ -4,8 +4,9 @@ import { theme } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  MessageOutlined,
   MenuOutlined,
+  HomeOutlined,
+  InfoCircleOutlined,
 } from "@ant-design/icons";
 import ModeToggle from "../Generic/ModeToggle";
 import MainRoute from "../../Route/route";
@@ -117,7 +118,12 @@ function Layouts() {
               }}
             >
               <Menu selectedKeys={[]} mode="inline" style={{ height: "100%" }}>
-                <Menu.Item key={[]} icon={<MessageOutlined />}></Menu.Item>
+                <Menu.Item key={[]} icon={<HomeOutlined />}>
+                  Home
+                </Menu.Item>
+                <Menu.Item key={[]} icon={<InfoCircleOutlined />}>
+                  Coantact us
+                </Menu.Item>
               </Menu>
             </Sider>
           )}
@@ -136,7 +142,12 @@ function Layouts() {
               width={200}
             >
               <Menu selectedKeys={[]} mode="inline" style={{ height: "100%" }}>
-                <Menu.Item key={[]} icon={<MessageOutlined />}></Menu.Item>
+                <Menu.Item key={[]} icon={<HomeOutlined />}>
+                  Home
+                </Menu.Item>
+                <Menu.Item key={[]} icon={<InfoCircleOutlined />}>
+                  Contact us
+                </Menu.Item>
               </Menu>
             </Drawer>
           )}
@@ -148,7 +159,12 @@ function Layouts() {
               transition: "0.2s",
             }}
           >
-            <Content>
+            <Content
+              style={{
+                height: "100%",
+                width: "100%",
+              }}
+            >
               <MainRoute />
             </Content>
           </Layout>
