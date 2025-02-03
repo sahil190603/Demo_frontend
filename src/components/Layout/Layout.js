@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Layout, ConfigProvider, Drawer, Button } from "antd";
+import { Menu, Layout, ConfigProvider, Drawer, Button, Divider } from "antd";
 import { theme } from "antd";
 import {
   MenuFoldOutlined,
@@ -12,6 +12,7 @@ import ModeToggle from "../Generic/ModeToggle";
 import MainRoute from "../../Route/route";
 import MediaQueryHandler from "../Hooks/MediaQueryhandler";
 import { useNavigate, useLocation } from "react-router-dom";
+import { HappyProvider } from "@ant-design/happy-work-theme";
 
 const { Header, Content, Sider } = Layout;
 
@@ -83,7 +84,7 @@ function Layouts() {
             zIndex: 1,
             display: "flex",
             alignItems: "center",
-            backgroundColor: isDarkMode ? "#001529" : "#1890ff",
+            backgroundColor: "#002140",
             padding: "0 22px",
             height: "55px",
           }}
@@ -101,6 +102,7 @@ function Layouts() {
           >
             <ModeToggle isDarkMode={isDarkMode} onToggle={handleToggle} />
             {isMobile && (
+              <HappyProvider>
               <Button
                 type="text"
                 icon={
@@ -109,6 +111,7 @@ function Layouts() {
                 onClick={toggleDrawer}
                 style={{ marginLeft: "10px" }}
               />
+              </HappyProvider>
             )}
           </div>
         </Header>
@@ -124,13 +127,25 @@ function Layouts() {
               collapsedWidth={55}
               trigger={
                 collapsed ? (
-                  <MenuUnfoldOutlined
-                    style={{ color: "white", fontSize: "18px" }}
-                  />
+                  <HappyProvider>
+                  <Button
+                  variant={"outlined"}
+                   style={{backgroundColor:"#002140"}}>
+                    <MenuUnfoldOutlined
+                      style={{ color: "white", fontSize: "18px" }}
+                    />
+                  </Button>
+                  </HappyProvider>
                 ) : (
-                  <MenuFoldOutlined
-                    style={{ color: "white", fontSize: "18px" }}
-                  />
+                  <HappyProvider>
+                  <Button 
+                  variant={"outlined"}
+                  style={{ backgroundColor:"#002140"}}>
+                    <MenuFoldOutlined
+                      style={{ color: "white", fontSize: "18px" }}
+                    />
+                  </Button>
+                  </HappyProvider>
                 )
               }
               style={{
@@ -150,6 +165,7 @@ function Layouts() {
                   key="1"
                   icon={<HomeOutlined />}
                   onClick={() => handleMenuClick("1")}
+                  style={{ marginTop: "10px" }}
                 >
                   Home
                 </Menu.Item>
@@ -160,6 +176,7 @@ function Layouts() {
                 >
                   Contact us
                 </Menu.Item>
+                <Divider type="horizontal" style={{ margin: "10px 0" }} />
               </Menu>
             </Sider>
           )}
@@ -196,6 +213,7 @@ function Layouts() {
                 >
                   Contact us
                 </Menu.Item>
+                <Divider type="horizontal" style={{ margin: "10px 0" }} />
               </Menu>
             </Drawer>
           )}

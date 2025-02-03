@@ -8,7 +8,7 @@ function Home() {
   const [selectedTab, setSelectedTab] = useState("1");
 
   const carouselItemStyle = {
-    height: "calc(90vh - 300px)",
+    height: isMobile ? "calc(90vh - 400px)" : "calc(90vh - 300px)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -49,7 +49,7 @@ function Home() {
           onChange={onChange}
           tabBarGutter={10}
           type="card"
-          size={"large"}
+          size={isMobile ? "middle": "large"}
           centered={true}
           items={new Array(3).fill(null).map((_, i) => {
             const id = String(i + 1);
@@ -67,7 +67,6 @@ function Home() {
                 </div>
               ),
               key: id,
-              children: `Content of Tab Pane ${id}`,
             };
           })}
         />
@@ -80,7 +79,7 @@ function Home() {
           }}
           //   73 , 180 , + 95vw
         >
-          <div>
+         <div>
             <h3 style={carouselItemStyle}>Slide 1</h3>
           </div>
           <div>
