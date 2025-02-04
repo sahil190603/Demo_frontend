@@ -13,13 +13,16 @@ import MainRoute from "../../Route/route";
 import MediaQueryHandler from "../Hooks/MediaQueryhandler";
 import { useNavigate, useLocation } from "react-router-dom";
 import { HappyProvider } from "@ant-design/happy-work-theme";
+import useThemeDetector from "../Hooks/ThemeDetector";
+
 
 const { Header, Content, Sider } = Layout;
 
 function Layouts() {
+  const isDarkTheme = useThemeDetector();
   const { defaultAlgorithm, darkAlgorithm } = theme;
 
-  const storedTheme = localStorage.getItem("theme") || "light";
+  const storedTheme = localStorage.getItem("theme") || isDarkTheme;
   const [isDarkMode, setIsDarkMode] = useState(storedTheme === "dark");
   const [collapsed, setCollapsed] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
@@ -69,7 +72,22 @@ function Layouts() {
       toggleDrawer();
     }
   };
-
+  const getMenuItems = () => {
+    return [
+      {
+        key: "1",
+        icon: <HomeOutlined />,
+        label: "Home", 
+        onClick: () => handleMenuClick("1"),
+      },
+      {
+        key: "2",
+        icon: <InfoCircleOutlined />,
+        label: "Contact us", 
+        onClick: () => handleMenuClick("2"),
+      },
+    ];
+  };
   return (
     <ConfigProvider
       theme={{
@@ -84,7 +102,7 @@ function Layouts() {
             zIndex: 1,
             display: "flex",
             alignItems: "center",
-            backgroundColor: "#002140",
+            backgroundColor: isDarkMode ? "#002140" : "#4096ff",
             padding: "0 22px",
             height: "55px",
           }}
@@ -160,24 +178,11 @@ function Layouts() {
                 selectedKeys={[selectedKey]}
                 mode="inline"
                 style={{ height: "100%" }}
+                items={getMenuItems()} 
               >
-                <Menu.Item
-                  key="1"
-                  icon={<HomeOutlined />}
-                  onClick={() => handleMenuClick("1")}
-                  style={{ marginTop: "10px" }}
-                >
-                  Home
-                </Menu.Item>
-                <Menu.Item
-                  key="2"
-                  icon={<InfoCircleOutlined />}
-                  onClick={() => handleMenuClick("2")}
-                >
-                  Contact us
-                </Menu.Item>
-                <Divider type="horizontal" style={{ margin: "10px 0" }} />
               </Menu>
+
+                <Divider type="horizontal" style={{ margin: "10px 0" }} />
             </Sider>
           )}
 
