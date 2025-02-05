@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Tabs, Carousel } from "antd";
+import { Card, Tabs, Carousel, Tooltip } from "antd";
 import MediaQueryHandler from "../components/Hooks/MediaQueryhandler";
 import MapComponent from "../components/Mapcomponent";
 
@@ -23,6 +23,7 @@ function Home() {
     setSelectedTab(key);
   };
 
+  
   return (
     <div
       style={{
@@ -49,8 +50,8 @@ function Home() {
           onChange={onChange}
           tabBarGutter={10}
           type="card"
-          size={isMobile ? "middle": "large"}
-          centered={true}
+          size={isMobile ? "small": "large"}
+          centered={true} 
           items={new Array(3).fill(null).map((_, i) => {
             const id = String(i + 1);
             return {
@@ -58,12 +59,15 @@ function Home() {
                 <div
                   style={{
                     width: isMobile
-                      ? "calc(33vw - 77px)"
+                      ? "calc(33vw - 73px)"
                       : "calc(-190px + 30vw)",
-                    textAlign: "center",
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden'
                   }}
                 >
-                  Tab {id}
+                 <Tooltip placement="top" title={`Bhuyangdev ${id}`} >
+                  Bhuyangdev {id}
+                  </Tooltip>
                 </div>
               ),
               key: id,
