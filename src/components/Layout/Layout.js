@@ -139,7 +139,7 @@ function Layouts() {
           {!isMobile && (
             <Sider
               collapsible
-              width={180}
+              width={160}
               collapsed={collapsed}
               onCollapse={handleCollapse}
               collapsedWidth={55}
@@ -225,8 +225,8 @@ function Layouts() {
 
           <Layout
             style={{
-              marginLeft: isMobile ? 0 : collapsed ? 55 : 180,
-              padding: "15px",
+              marginLeft: isMobile ? 0 : collapsed ? 55 : 160,
+              padding: "5px",
               transition: "0.2s",
             }}
           >

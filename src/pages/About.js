@@ -8,7 +8,7 @@ const About = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "calc(100vh - 85px)",
+        height: "calc(100vh - 65px)",
       }}
     >
       <Card

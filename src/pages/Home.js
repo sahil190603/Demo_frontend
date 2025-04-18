@@ -23,14 +23,13 @@ function Home() {
     setSelectedTab(key);
   };
 
-  
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "calc(100vh - 85px)",
+        height: "calc(100vh - 65px)",
       }}
     >
       <Card
@@ -50,8 +49,8 @@ function Home() {
           onChange={onChange}
           tabBarGutter={10}
           type="card"
-          size={isMobile ? "small": "large"}
-          centered={true} 
+          size={isMobile ? "small" : "large"}
+          centered={true}
           items={new Array(3).fill(null).map((_, i) => {
             const id = String(i + 1);
             return {
@@ -61,12 +60,12 @@ function Home() {
                     width: isMobile
                       ? "calc(33vw - 73px)"
                       : "calc(-190px + 30vw)",
-                    textOverflow: 'ellipsis',
-                    overflow: 'hidden'
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
                   }}
                 >
-                 <Tooltip placement="top" title={`Bhuyangdev ${id}`} >
-                  Bhuyangdev {id}
+                  <Tooltip placement="top" title={`Bhuyangdev ${id}`}>
+                    Bhuyangdev {id}
                   </Tooltip>
                 </div>
               ),
@@ -83,7 +82,7 @@ function Home() {
           }}
           //   73 , 180 , + 95vw
         >
-         <div>
+          <div>
             <h3 style={carouselItemStyle}>Slide 1</h3>
           </div>
           <div>
